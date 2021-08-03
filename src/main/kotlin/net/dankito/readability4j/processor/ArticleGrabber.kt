@@ -1120,7 +1120,7 @@ open class ArticleGrabber(protected val options: ReadabilityOptions, protected v
         ancestors.add(doc.selectFirst("html")) // needed as dir is often set on html tag
 
         ancestors.forEach { ancestor ->
-            val articleDir = ancestor.attr("dir")
+            val articleDir = ancestor?.attr("dir") ?: ""
             if(articleDir.isNotBlank()) {
                 this.articleDir = articleDir
                 return
